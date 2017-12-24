@@ -16,6 +16,8 @@
 		0DE201D31FF0299800C23023 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D21FF0299800C23023 /* Colors.swift */; };
 		0DE201D51FF029B500C23023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D41FF029B500C23023 /* LoginViewController.swift */; };
 		0DE201D71FF029D900C23023 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D61FF029D900C23023 /* SignUpViewController.swift */; };
+		0DE201DF1FF03C0300C23023 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201DE1FF03C0300C23023 /* Fonts.swift */; };
+		0DE201E11FF0553100C23023 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201E01FF0553100C23023 /* Images.swift */; };
 		475BBE1D2A19D6EA68CF3F1D /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0514D0E2C10B8F432F3D3 /* Pods_Woof.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		0DE201D21FF0299800C23023 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0DE201D41FF029B500C23023 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0DE201D61FF029D900C23023 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0DE201DE1FF03C0300C23023 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		0DE201E01FF0553100C23023 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		9D276DFEF2344485D1D1318B /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
 		9EBB8666E02ED9A71CFF0FCC /* Pods-Woof.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.release.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.release.xcconfig"; sourceTree = "<group>"; };
 		CEC0514D0E2C10B8F432F3D3 /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +99,8 @@
 			children = (
 				0DE201D01FF0297F00C23023 /* Constants.swift */,
 				0DE201D21FF0299800C23023 /* Colors.swift */,
+				0DE201E01FF0553100C23023 /* Images.swift */,
+				0DE201DE1FF03C0300C23023 /* Fonts.swift */,
 			);
 			path = "Colors&Constants";
 			sourceTree = "<group>";
@@ -247,10 +253,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DE201DF1FF03C0300C23023 /* Fonts.swift in Sources */,
 				0DE201D71FF029D900C23023 /* SignUpViewController.swift in Sources */,
 				0DE201BF1FF0268900C23023 /* ViewController.swift in Sources */,
 				0DE201D31FF0299800C23023 /* Colors.swift in Sources */,
 				0DE201BD1FF0268900C23023 /* AppDelegate.swift in Sources */,
+				0DE201E11FF0553100C23023 /* Images.swift in Sources */,
 				0DE201D51FF029B500C23023 /* LoginViewController.swift in Sources */,
 				0DE201D11FF0297F00C23023 /* Constants.swift in Sources */,
 			);

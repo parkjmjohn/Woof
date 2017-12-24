@@ -10,8 +10,12 @@ import UIKit
 
 let backgroundAlpha: CGFloat = 0.65
 
-let buttonFontSize: CGFloat = 28.0
+let headerFontSize: CGFloat = 65.0
+
+let buttonFontSizer: CGFloat = 28.0
 let buttonHeight: CGFloat = 32.0
 let buttonCornerRadius: CGFloat = 10.0
+
+let textFieldCornerRadius: CGFloat = 5.0
 
 let backButtonWidth: CGFloat = 80.0
