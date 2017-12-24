@@ -5,6 +5,7 @@ Like-Tinder, but for dogs
 - Create user database with Firebase
 - Have Tinder-like aspects
 - Beginning animations
+- Change button color whenk pressed
 
 ##### Useful Tools
 - http://iosfonts.com/
