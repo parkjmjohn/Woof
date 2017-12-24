@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     let padding1: CGFloat = 150.0
     let padding2: CGFloat = 100.0
     let padding3: CGFloat = 6.0
-    //    let borderWidth: CGFloat = 1
     let fontSize0: CGFloat = 65.0
     
     // MARK: UI
@@ -72,8 +71,7 @@ class ViewController: UIViewController {
     func setUpLoginSignUp() {
         loginButton = UIButton(frame: CGRect(x: view.center.x - padding2 - padding3, y: view.center.y + padding1, width: padding2, height: buttonHeight))
         loginButton.layer.cornerRadius = buttonCornerRadius
-        //        loginButton.layer.borderWidth = borderWidth
-        loginButton.backgroundColor = .logInColor
+        loginButton.backgroundColor = .signUpColor
         loginButton.setTitle("Login", for: .normal)
         loginButton.titleLabel?.font = UIFont(name: "SavoyeLetPlain", size: buttonFontSize)
         loginButton.titleEdgeInsets = UIEdgeInsetsMake(10.0, 0.0, 0.0, 0.0)
@@ -83,7 +81,6 @@ class ViewController: UIViewController {
         
         signUpButton = UIButton(frame: CGRect(x: view.center.x + padding3, y: view.center.y + padding1, width: padding2, height: buttonHeight))
         signUpButton.layer.cornerRadius = buttonCornerRadius
-        //        signUpButton.layer.borderWidth = borderWidth
         signUpButton.backgroundColor = .signUpColor
         signUpButton.setTitle("Sign Up", for: .normal)
         signUpButton.titleLabel?.font = UIFont(name: "SavoyeLetPlain", size: buttonFontSize)
@@ -99,7 +96,8 @@ class ViewController: UIViewController {
     }
     
     @objc func setUpPressed() {
-        
+        let signUpViewController = SignUpViewController()
+        navigationController?.pushViewController(signUpViewController, animated: false)
     }
     
     // MARK: Needed Swift Functions

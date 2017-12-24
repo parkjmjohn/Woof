@@ -18,6 +18,10 @@ extension UIColor {
         return UIColor(red: 0.44, green: 0.69, blue: 0.96, alpha: 1.00)
     }
     
+    class var logInColorHighlighted: UIColor {
+        return UIColor(red: 0.44, green: 0.69, blue: 0.96, alpha: 1.00)
+    }
+    
     class var signUpColor: UIColor {
         return UIColor(red: 0.96, green: 0.50, blue: 0.13, alpha: 1.00)
     }

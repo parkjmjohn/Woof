@@ -70,17 +70,33 @@
 			isa = PBXGroup;
 			children = (
 				0DE201BC1FF0268900C23023 /* AppDelegate.swift */,
-				0DE201D01FF0297F00C23023 /* Constants.swift */,
-				0DE201D21FF0299800C23023 /* Colors.swift */,
-				0DE201BE1FF0268900C23023 /* ViewController.swift */,
-				0DE201D41FF029B500C23023 /* LoginViewController.swift */,
-				0DE201D61FF029D900C23023 /* SignUpViewController.swift */,
+				0DE201D91FF02BA100C23023 /* Colors&Constants */,
+				0DE201D81FF02B9000C23023 /* Home */,
 				0DE201C31FF0268900C23023 /* Assets.xcassets */,
 				0DE201C51FF0268900C23023 /* LaunchScreen.storyboard */,
 				0DE201CE1FF026AD00C23023 /* GoogleService-Info.plist */,
 				0DE201C81FF0268900C23023 /* Info.plist */,
 			);
 			path = Woof;
+			sourceTree = "<group>";
+		};
+		0DE201D81FF02B9000C23023 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0DE201BE1FF0268900C23023 /* ViewController.swift */,
+				0DE201D41FF029B500C23023 /* LoginViewController.swift */,
+				0DE201D61FF029D900C23023 /* SignUpViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0DE201D91FF02BA100C23023 /* Colors&Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0DE201D01FF0297F00C23023 /* Constants.swift */,
+				0DE201D21FF0299800C23023 /* Colors.swift */,
+			);
+			path = "Colors&Constants";
 			sourceTree = "<group>";
 		};
 		93A0BADD7A4E70DD73BD896C /* Pods */ = {
