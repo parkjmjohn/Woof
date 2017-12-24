@@ -14,3 +14,4 @@ Like-Tinder, but for dogs
 ###### Credits
 - Dog Background Image: https://www.pinterest.com/baptistgirl95/cute-and-cuddly/
 - App Icon: http://www.lovethispic.com/image/112455/puppy-love
+- App Icon Generator: https://icons8.com/
