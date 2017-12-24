@@ -12,6 +12,10 @@
 		0DE201C41FF0268900C23023 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DE201C31FF0268900C23023 /* Assets.xcassets */; };
 		0DE201C71FF0268900C23023 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DE201C51FF0268900C23023 /* LaunchScreen.storyboard */; };
 		0DE201CF1FF026AD00C23023 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DE201CE1FF026AD00C23023 /* GoogleService-Info.plist */; };
+		0DE201D11FF0297F00C23023 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D01FF0297F00C23023 /* Constants.swift */; };
+		0DE201D31FF0299800C23023 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D21FF0299800C23023 /* Colors.swift */; };
+		0DE201D51FF029B500C23023 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D41FF029B500C23023 /* LoginViewController.swift */; };
+		0DE201D71FF029D900C23023 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE201D61FF029D900C23023 /* SignUpViewController.swift */; };
 		475BBE1D2A19D6EA68CF3F1D /* Pods_Woof.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0514D0E2C10B8F432F3D3 /* Pods_Woof.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,10 @@
 		0DE201C61FF0268900C23023 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DE201C81FF0268900C23023 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DE201CE1FF026AD00C23023 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0DE201D01FF0297F00C23023 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0DE201D21FF0299800C23023 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0DE201D41FF029B500C23023 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0DE201D61FF029D900C23023 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		9D276DFEF2344485D1D1318B /* Pods-Woof.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.debug.xcconfig"; sourceTree = "<group>"; };
 		9EBB8666E02ED9A71CFF0FCC /* Pods-Woof.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Woof.release.xcconfig"; path = "Pods/Target Support Files/Pods-Woof/Pods-Woof.release.xcconfig"; sourceTree = "<group>"; };
 		CEC0514D0E2C10B8F432F3D3 /* Pods_Woof.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Woof.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				0DE201BC1FF0268900C23023 /* AppDelegate.swift */,
+				0DE201D01FF0297F00C23023 /* Constants.swift */,
+				0DE201D21FF0299800C23023 /* Colors.swift */,
 				0DE201BE1FF0268900C23023 /* ViewController.swift */,
+				0DE201D41FF029B500C23023 /* LoginViewController.swift */,
+				0DE201D61FF029D900C23023 /* SignUpViewController.swift */,
 				0DE201C31FF0268900C23023 /* Assets.xcassets */,
 				0DE201C51FF0268900C23023 /* LaunchScreen.storyboard */,
 				0DE201CE1FF026AD00C23023 /* GoogleService-Info.plist */,
@@ -219,8 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DE201D71FF029D900C23023 /* SignUpViewController.swift in Sources */,
 				0DE201BF1FF0268900C23023 /* ViewController.swift in Sources */,
+				0DE201D31FF0299800C23023 /* Colors.swift in Sources */,
 				0DE201BD1FF0268900C23023 /* AppDelegate.swift in Sources */,
+				0DE201D51FF029B500C23023 /* LoginViewController.swift in Sources */,
+				0DE201D11FF0297F00C23023 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
