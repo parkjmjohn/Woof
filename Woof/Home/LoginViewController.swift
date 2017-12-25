@@ -56,6 +56,8 @@ class LoginViewController: UIViewController {
     // MARK: Back button setup
     func setUpBackButton() {
         backButton = UIButton(frame: CGRect(x: padding0 / 2.0, y: padding0, width: backButtonWidth, height: buttonHeight))
+        backButton.layer.borderWidth = buttonBorder
+        backButton.layer.borderColor = .borderColor
         backButton.layer.cornerRadius = buttonCornerRadius
         backButton.backgroundColor = .loginColor
         backButton.setTitle("Back", for: .normal)
@@ -78,6 +80,9 @@ class LoginViewController: UIViewController {
         username.placeholder = " e-mail"
         username.leftViewMode = .always
         username.leftView = .userImg
+        username.autocorrectionType = .no
+        username.autocapitalizationType = .none
+        username.spellCheckingType = .no
         view.addSubview(username)
         
         password = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * 1.15, width: padding2, height: buttonHeight * 1.15))
@@ -87,16 +92,27 @@ class LoginViewController: UIViewController {
         password.placeholder = " password"
         password.leftViewMode = .always
         password.leftView = .passwordImg
+        password.autocorrectionType = .no
+        password.autocapitalizationType = .none
+        password.spellCheckingType = .no
+        password.isSecureTextEntry = true
         view.addSubview(password)
         
         loginButton = UIButton(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * 1.15 * 2 + padding3, width: padding2, height: buttonHeight * 1.15))
+        loginButton.layer.borderWidth = buttonBorder
+        loginButton.layer.borderColor = .borderColor
         loginButton.center.x = view.center.x
         loginButton.backgroundColor = .homeFontColor
         loginButton.layer.cornerRadius = textFieldCornerRadius
         loginButton.setTitle("LOGIN", for: .normal)
         loginButton.titleLabel?.font = .buttonFont
         loginButton.titleEdgeInsets = UIEdgeInsetsMake(10.0, 0.0, 0.0, 0.0)
+        loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
         view.addSubview(loginButton)
+    }
+    
+    @objc func loginPressed() {
+        
     }
     
     // MARK: Needed Swift Functions

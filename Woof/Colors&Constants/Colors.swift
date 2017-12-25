@@ -27,3 +27,11 @@ extension UIColor {
     }
     
 }
+
+extension CGColor {
+    
+    class var borderColor: CGColor {
+        return UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1.00).cgColor
+    }
+    
+}

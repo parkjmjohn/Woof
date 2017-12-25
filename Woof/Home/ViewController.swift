@@ -69,6 +69,8 @@ class ViewController: UIViewController {
     // MARK: Login and SignUp functions setup
     func setUpLoginSignUp() {
         loginButton = UIButton(frame: CGRect(x: view.center.x - padding2 - padding3, y: view.center.y + padding1, width: padding2, height: buttonHeight))
+        loginButton.layer.borderWidth = buttonBorder
+        loginButton.layer.borderColor = .borderColor
         loginButton.layer.cornerRadius = buttonCornerRadius
         loginButton.backgroundColor = .loginColor
         loginButton.setTitle("Login", for: .normal)
@@ -78,6 +80,8 @@ class ViewController: UIViewController {
         view.addSubview(loginButton)
         
         signUpButton = UIButton(frame: CGRect(x: view.center.x + padding3, y: view.center.y + padding1, width: padding2, height: buttonHeight))
+        signUpButton.layer.borderWidth = buttonBorder
+        signUpButton.layer.borderColor = .borderColor
         signUpButton.layer.cornerRadius = buttonCornerRadius
         signUpButton.backgroundColor = .signUpColor
         signUpButton.setTitle("Sign Up", for: .normal)
