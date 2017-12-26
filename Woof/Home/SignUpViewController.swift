@@ -101,7 +101,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         name.layer.cornerRadius = textFieldCornerRadius
         name.placeholder = " Name"
         name.autocorrectionType = .no
-        name.autocapitalizationType = .none
+        name.autocapitalizationType = .words
         name.spellCheckingType = .no
         name.delegate = self
         view.addSubview(name)
