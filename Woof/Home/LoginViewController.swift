@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Padding
     let padding0: CGFloat = 25.0
@@ -101,6 +101,7 @@ class LoginViewController: UIViewController {
         username.autocorrectionType = .no
         username.autocapitalizationType = .none
         username.spellCheckingType = .no
+        username.delegate = self
         view.addSubview(username)
         
         password = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4, width: padding2, height: buttonHeight * padding4))
@@ -114,6 +115,7 @@ class LoginViewController: UIViewController {
         password.autocapitalizationType = .none
         password.spellCheckingType = .no
         password.isSecureTextEntry = true
+        password.delegate = self
         view.addSubview(password)
         
         loginButton = UIButton(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4 * 2 + padding3, width: padding2, height: buttonHeight * padding4))
@@ -127,6 +129,17 @@ class LoginViewController: UIViewController {
         loginButton.titleEdgeInsets = UIEdgeInsetsMake(10.0, 0.0, 0.0, 0.0)
         loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
         view.addSubview(loginButton)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == username {
+            textField.resignFirstResponder()
+            password.becomeFirstResponder()
+        }
+        else {
+            loginPressed()
+        }
+        return true
     }
     
     @objc func loginPressed() {

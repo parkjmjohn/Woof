@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         view.addSubview(header0)
         
         header1 = UILabel(frame: CGRect(x: 0.0, y: padding0 + headerFontSize, width: view.frame.width, height: headerFontSize * 1.2))
-        header1.text = "Like Tinder, But For Dogs"
+        header1.text = "It's Like Tinder, But For Dogs"
         header1.textAlignment = .center
         header1.font = .subHeaderFont
         header1.textColor = .homeFontColor

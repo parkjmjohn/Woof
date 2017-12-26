@@ -10,7 +10,7 @@
 import UIKit
 import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Padding
     let padding0: CGFloat = 25.0
@@ -103,6 +103,7 @@ class SignUpViewController: UIViewController {
         name.autocorrectionType = .no
         name.autocapitalizationType = .none
         name.spellCheckingType = .no
+        name.delegate = self
         view.addSubview(name)
         
         email = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4, width: padding2, height: buttonHeight * padding4))
@@ -113,6 +114,7 @@ class SignUpViewController: UIViewController {
         email.autocorrectionType = .no
         email.autocapitalizationType = .none
         email.spellCheckingType = .no
+        email.delegate = self
         view.addSubview(email)
         
         password = UITextField(frame: CGRect(x: 0.0, y: 1.1 * padding1 + buttonHeight * padding4 * 2, width: padding2, height: buttonHeight * padding4))
@@ -124,6 +126,7 @@ class SignUpViewController: UIViewController {
         password.autocapitalizationType = .none
         password.spellCheckingType = .no
         password.isSecureTextEntry = true
+        password.delegate = self
         view.addSubview(password)
         
         repassword = UITextField(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * padding4 * 3, width: padding2, height: buttonHeight * padding4))
@@ -135,6 +138,7 @@ class SignUpViewController: UIViewController {
         repassword.autocapitalizationType = .none
         repassword.spellCheckingType = .no
         repassword.isSecureTextEntry = true
+        repassword.delegate = self
         view.addSubview(repassword)
         
         signUpButton = UIButton(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * padding4 * 4 + padding3, width: padding2, height: buttonHeight * padding4))
@@ -148,6 +152,23 @@ class SignUpViewController: UIViewController {
         signUpButton.titleEdgeInsets = UIEdgeInsetsMake(10.0, 0.0, 0.0, 0.0)
         signUpButton.addTarget(self, action: #selector(signUpPressed), for: .touchUpInside)
         view.addSubview(signUpButton)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == name {
+            email.becomeFirstResponder()
+        }
+        else if textField == email {
+            password.becomeFirstResponder()
+        }
+        else if textField == password {
+            repassword.becomeFirstResponder()
+        }
+        else {
+            signUpPressed()
+        }
+        return true
     }
     
     func cleanUpHeader() {

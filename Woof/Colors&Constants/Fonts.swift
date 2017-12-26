@@ -15,7 +15,7 @@ extension UIFont {
     }
     
     class var subHeaderFont: UIFont {
-        return UIFont(name: "SavoyeLetPlain", size: headerFontSize / 1.5)!
+        return UIFont(name: "SavoyeLetPlain", size: headerFontSize / 2.0)!
     }
     
     class var buttonFont: UIFont {
