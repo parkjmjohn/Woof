@@ -51,9 +51,9 @@ class ViewController: UIViewController {
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
         
-        header0 = UILabel(frame: CGRect(x: 0.0, y: padding0, width: view.frame.width, height: headerFontSize * 1.2))
+        header0 = UILabel(frame: CGRect(x: 10.0, y: padding0, width: view.frame.width, height: headerFontSize * 1.2))
         header0.text = "WOOF"
-        header0.textAlignment = .center
+//        header0.textAlignment = .center
         header0.font = .headerFont
         header0.textColor = .homeFontColor
         view.addSubview(header0)
