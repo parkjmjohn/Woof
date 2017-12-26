@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -15,10 +16,12 @@ class LoginViewController: UIViewController {
     let padding1: CGFloat = 125.0
     let padding2: CGFloat = 250.0
     let padding3: CGFloat = 28.0
+    let padding4: CGFloat = 1.15
     
     // MARK: UI
     var backgroundImage: UIImageView!
     var backButton: UIButton!
+    var header: UILabel!
     var username: UITextField!
     var password: UITextField!
     var loginButton: UIButton!
@@ -30,6 +33,7 @@ class LoginViewController: UIViewController {
         //background setup
         setUpBackgroundImage()
         setUpBackButton()
+        setUpHeader()
         setUpLogin()
     }
     
@@ -43,6 +47,19 @@ class LoginViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // MARK: Header setup
+    func setUpHeader() {
+        header = UILabel(frame: CGRect(x: 0, y: padding1 * 0.5, width: view.frame.width, height: buttonHeight * padding4))
+        updateHeader(newText: "Enter E-mail and Password", newColor: .white)
+        header.textAlignment = .center
+        view.addSubview(header)
+    }
+    
+    func updateHeader(newText: String, newColor: UIColor) {
+        header.textColor = newColor
+        header.text = newText
     }
     
     // MARK: Background image setup
@@ -73,7 +90,7 @@ class LoginViewController: UIViewController {
     
     // MARK: Login setup
     func setUpLogin() {
-        username = UITextField(frame: CGRect(x: 0.0, y: padding1 * 0.9, width: padding2, height: buttonHeight * 1.15))
+        username = UITextField(frame: CGRect(x: 0.0, y: padding1 * 0.9, width: padding2, height: buttonHeight * padding4))
         username.center.x = view.center.x
         username.backgroundColor = .textFieldColor
         username.layer.cornerRadius = textFieldCornerRadius
@@ -85,7 +102,7 @@ class LoginViewController: UIViewController {
         username.spellCheckingType = .no
         view.addSubview(username)
         
-        password = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * 1.15, width: padding2, height: buttonHeight * 1.15))
+        password = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4, width: padding2, height: buttonHeight * padding4))
         password.center.x = view.center.x
         password.backgroundColor = .textFieldColor
         password.layer.cornerRadius = textFieldCornerRadius
@@ -98,7 +115,7 @@ class LoginViewController: UIViewController {
         password.isSecureTextEntry = true
         view.addSubview(password)
         
-        loginButton = UIButton(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * 1.15 * 2 + padding3, width: padding2, height: buttonHeight * 1.15))
+        loginButton = UIButton(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4 * 2 + padding3, width: padding2, height: buttonHeight * padding4))
         loginButton.layer.borderWidth = buttonBorder
         loginButton.layer.borderColor = .borderColor
         loginButton.center.x = view.center.x
@@ -112,7 +129,24 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginPressed() {
-        
+        let userEmail = username.text
+        let userPassword = password.text
+        if userEmail != "" && userPassword != "" {
+            Auth.auth().signIn(withEmail: userEmail!, password: userPassword!, completion: { (user, error) in
+                if user != nil {
+                    let viewController = ViewController()
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                } else {
+                    if let userError = error?.localizedDescription {
+                        self.updateHeader(newText: userError, newColor: .red)
+                    } else {
+                        Error.userError()
+                    }
+                }
+            })
+        } else {
+            updateHeader(newText: "Fill in all Fields", newColor: .white)
+        }
     }
     
     // MARK: Needed Swift Functions

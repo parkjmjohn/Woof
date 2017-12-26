@@ -17,10 +17,12 @@ class SignUpViewController: UIViewController {
     let padding1: CGFloat = 125.0
     let padding2: CGFloat = 250.0
     let padding3: CGFloat = 28.0
+    let padding4: CGFloat = 1.15
     
     // MARK: UI
     var backgroundImage: UIImageView!
     var backButton: UIButton!
+    var header: UILabel!
     var name: UITextField!
     var email: UITextField!
     var password: UITextField!
@@ -34,6 +36,7 @@ class SignUpViewController: UIViewController {
         //background setup
         setUpBackgroundImage()
         setUpBackButton()
+        setUpHeader()
         setUpSignUp()
     }
     
@@ -47,6 +50,19 @@ class SignUpViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // MARK: Header setup
+    func setUpHeader() {
+        header = UILabel(frame: CGRect(x: 0, y: padding1 * 0.5, width: view.frame.width, height: buttonHeight * padding4))
+        updateHeader(newText: "Enter Information Below", newColor: .white)
+        header.textAlignment = .center
+        view.addSubview(header)
+    }
+    
+    func updateHeader(newText: String, newColor: UIColor) {
+        header.textColor = newColor
+        header.text = newText
     }
     
     // MARK: Background image setup
@@ -78,7 +94,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: Sign Up setup
     func setUpSignUp() {
-        name = UITextField(frame: CGRect(x: 0.0, y: padding1 * 0.9, width: padding2, height: buttonHeight * 1.15))
+        name = UITextField(frame: CGRect(x: 0.0, y: padding1 * 0.9, width: padding2, height: buttonHeight * padding4))
         name.center.x = view.center.x
         name.backgroundColor = .textFieldColor
         name.layer.cornerRadius = textFieldCornerRadius
@@ -88,7 +104,7 @@ class SignUpViewController: UIViewController {
         name.spellCheckingType = .no
         view.addSubview(name)
         
-        email = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * 1.15, width: padding2, height: buttonHeight * 1.15))
+        email = UITextField(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4, width: padding2, height: buttonHeight * padding4))
         email.center.x = view.center.x
         email.backgroundColor = .textFieldColor
         email.layer.cornerRadius = textFieldCornerRadius
@@ -98,7 +114,7 @@ class SignUpViewController: UIViewController {
         email.spellCheckingType = .no
         view.addSubview(email)
         
-        password = UITextField(frame: CGRect(x: 0.0, y: 1.1 * padding1 + buttonHeight * 1.15 * 2, width: padding2, height: buttonHeight * 1.15))
+        password = UITextField(frame: CGRect(x: 0.0, y: 1.1 * padding1 + buttonHeight * padding4 * 2, width: padding2, height: buttonHeight * padding4))
         password.center.x = view.center.x
         password.backgroundColor = .textFieldColor
         password.layer.cornerRadius = textFieldCornerRadius
@@ -109,7 +125,7 @@ class SignUpViewController: UIViewController {
         password.isSecureTextEntry = true
         view.addSubview(password)
         
-        repassword = UITextField(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * 1.15 * 3, width: padding2, height: buttonHeight * 1.15))
+        repassword = UITextField(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * padding4 * 3, width: padding2, height: buttonHeight * padding4))
         repassword.center.x = view.center.x
         repassword.backgroundColor = .textFieldColor
         repassword.layer.cornerRadius = textFieldCornerRadius
@@ -120,7 +136,7 @@ class SignUpViewController: UIViewController {
         repassword.isSecureTextEntry = true
         view.addSubview(repassword)
         
-        signUpButton = UIButton(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * 1.15 * 4 + padding3, width: padding2, height: buttonHeight * 1.15))
+        signUpButton = UIButton(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * padding4 * 4 + padding3, width: padding2, height: buttonHeight * padding4))
         signUpButton.layer.borderWidth = buttonBorder
         signUpButton.layer.borderColor = .borderColor
         signUpButton.center.x = view.center.x
@@ -133,6 +149,13 @@ class SignUpViewController: UIViewController {
         view.addSubview(signUpButton)
     }
     
+    func cleanUpHeader() {
+        name.text = ""
+        email.text = ""
+        password.text = ""
+        repassword.text = ""
+    }
+    
     @objc func signUpPressed() {
         let userName = name.text
         let userEmail = email.text
@@ -142,20 +165,23 @@ class SignUpViewController: UIViewController {
             userPassword == "" ||
             repassword.text == "" {
             Error.blankTextFields()
+            updateHeader(newText: "ERROR: FILL IN ALL FIELDS", newColor: .red)
             return
         }
         else if userPassword != repassword.text {
             Error.passwordMismatch()
+            updateHeader(newText: "ERROR: PASSWORDS DO NOT MATCH", newColor: .red)
             return
         }
         else {
             Auth.auth().createUser(withEmail: userEmail!, password: userPassword!, completion: { (user, error) in
                 if user != nil {
-                    print("FUCk year")
+                    self.updateHeader(newText: "Enter Information Below", newColor: .white)
+                    self.cleanUpHeader()
                 }
                 else {
                     if let userError = error?.localizedDescription {
-                        print(userError)
+                        self.updateHeader(newText: "ERROR: " + userError.capitalized, newColor: .red)
                     }
                     else {
                         Error.userError()

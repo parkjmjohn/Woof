@@ -22,4 +22,8 @@ extension UIFont {
         return UIFont(name: "SavoyeLetPlain", size: buttonFontSizer)!
     }
     
+    class var errorFont: UIFont {
+        return UIFont(name: "Menlo-Regular", size: buttonHeight * 1.3)!
+    }
+    
 }
