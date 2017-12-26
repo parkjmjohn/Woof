@@ -63,6 +63,7 @@ class SignUpViewController: UIViewController {
     func updateHeader(newText: String, newColor: UIColor) {
         header.textColor = newColor
         header.text = newText
+        header.adjustsFontSizeToFitWidth = true
     }
     
     // MARK: Background image setup
