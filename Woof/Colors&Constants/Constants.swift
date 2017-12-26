@@ -15,7 +15,7 @@ let headerFontSize: CGFloat = 65.0
 let buttonFontSizer: CGFloat = 28.0
 let buttonHeight: CGFloat = 32.0
 let buttonCornerRadius: CGFloat = 10.0
-let buttonBorder: CGFloat = 0.0
+let buttonBorder: CGFloat = 0.25
 
 let textFieldCornerRadius: CGFloat = 5.0
 
