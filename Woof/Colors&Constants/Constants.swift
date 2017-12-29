@@ -20,3 +20,5 @@ let buttonBorder: CGFloat = 0.25
 let textFieldCornerRadius: CGFloat = 5.0
 
 let backButtonWidth: CGFloat = 80.0
+
+let profileViewRadius: CGFloat = 20.0

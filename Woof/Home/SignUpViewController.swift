@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: Background image setup
     func setUpBackgroundImage() {
         backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background.png")
+        backgroundImage.image = UIImage(named: "homeBackground.png")
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
     }
@@ -198,8 +198,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         else {
             Auth.auth().createUser(withEmail: userEmail!, password: userPassword!, completion: { (user, error) in
                 if user != nil {
-                    self.updateHeader(newText: "Enter Information Below", newColor: .white)
+                    self.updateHeader(newText: "Successfully Signed Up", newColor: .white)
                     self.cleanUpHeader()
+                    WoofDataBase.saveNewUser(uid: (user?.uid)!, name: userName!, email: userEmail!)
                 }
                 else {
                     if let userError = error?.localizedDescription {

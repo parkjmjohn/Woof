@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -44,10 +44,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Adding Navigation Bar in further ViewControllers
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
     
     // MARK: Header setup
     func setUpHeader() {
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Background image setup
     func setUpBackgroundImage() {
         backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background.png")
+        backgroundImage.image = UIImage(named: "homeBackground.png")
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
     }
@@ -148,8 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if userEmail != "" && userPassword != "" {
             Auth.auth().signIn(withEmail: userEmail!, password: userPassword!, completion: { (user, error) in
                 if user != nil {
-                    let viewController = ViewController()
-                    self.navigationController?.pushViewController(viewController, animated: true)
+                    self.loginUser(uid: (Auth.auth().currentUser?.uid)!)
                 } else {
                     if let userError = error?.localizedDescription {
                         self.updateHeader(newText: userError, newColor: .red)
@@ -159,7 +158,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         } else {
-            updateHeader(newText: "Fill in all Fields", newColor: .white)
+            updateHeader(newText: "Fill in all Fields", newColor: .red)
+        }
+    }
+
+    func loginUser(uid: String) {
+        Database.database().reference(fromURL: WoofDataBaseSource).child("users").child(uid).child("Name").observeSingleEvent(of: .value, with: { (snapshot) in
+            WoofUserName = snapshot.value as! String
+            DispatchQueue.main.async(execute: {
+                let profileViewController = ProfileViewController()
+                self.navigationController?.pushViewController(profileViewController, animated: true)
+            })
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     

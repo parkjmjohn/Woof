@@ -8,5 +8,6 @@ target 'Woof' do
   # Pods for Woof
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
 end

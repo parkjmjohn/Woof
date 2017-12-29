@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     let padding0: CGFloat = 25.0
     let padding1: CGFloat = 150.0
     let padding2: CGFloat = 100.0
-    let padding3: CGFloat = 6.0
+    let padding3: CGFloat = 10.0
     let padding4: CGFloat = 15.0
     
     // MARK: UI
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     // MARK: Background image and label setup
     func setUpBackground() {
         backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background.png")
+        backgroundImage.image = UIImage(named: "homeBackground.png")
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
         
