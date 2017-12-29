@@ -94,12 +94,12 @@ class ViewController: UIViewController {
     
     @objc func loginPressed() {
         let loginViewController = LoginViewController()
-        navigationController?.pushViewController(loginViewController, animated: false)
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
     
     @objc func setUpPressed() {
         let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: false)
+        navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
     // MARK: Needed Swift Functions

@@ -6,10 +6,9 @@
 //  Copyright © 2017 John Park. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let WoofDataBaseSource = "https://woof-7d129.firebaseio.com/"
 
 // User's Info
 var WoofUserName = ""
-

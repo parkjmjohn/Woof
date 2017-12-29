@@ -23,9 +23,7 @@ class ProfileViewController: UIViewController {
         
         // UI setup
         setUpBackgroundImg()
-        setUpProfileView()
-    
-    }
+        setUpProfileView()    }
     
     // MARK: Background Image Setup
     func setUpBackgroundImg() {
@@ -36,7 +34,7 @@ class ProfileViewController: UIViewController {
     
     // MARK: Profile View Setup
     func setUpProfileView() {
-        profileView = ProfileView(frame: CGRect(x: padding0, y: padding0, width: view.frame.width - padding0 * 2, height: view.frame.height - padding0 * 2))
+        profileView = ProfileView(frame: CGRect(x: padding0, y: padding0 * 2.5, width: view.frame.width - padding0 * 2, height: view.frame.height - padding0 * 3.5))
         profileView.layer.cornerRadius = profileViewRadius
         view.addSubview(profileView)
     }

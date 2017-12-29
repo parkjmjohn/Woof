@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: Background image setup
     func setUpBackgroundImage() {
         backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "homeBackground.png")
+        backgroundImage.image = UIImage(named: "signUpBackground.jpg")
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
     }

@@ -66,7 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Background image setup
     func setUpBackgroundImage() {
         backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "homeBackground.png")
+        backgroundImage.image = UIImage(named: "loginBackground.png")
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
     }
