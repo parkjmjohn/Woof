@@ -7,6 +7,7 @@ Like-Tinder, but for dogs
 - Beginning animations
 
 ##### Useful Tools
+- Firebase: https://firebase.google.com/
 - iOS Fonts: http://iosfonts.com/
 - iOS Colors: https://briangrinstead.com/blog/ios-uicolor-picker/
 - App Icon: https://icons8.com/
