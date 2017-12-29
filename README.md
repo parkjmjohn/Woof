@@ -7,10 +7,10 @@ Like-Tinder, but for dogs
 - Beginning animations
 
 ##### Useful Tools
-- http://iosfonts.com/
-- https://briangrinstead.com/blog/ios-uicolor-picker/
+- iOS Fonts: http://iosfonts.com/
+- iOS Colors: https://briangrinstead.com/blog/ios-uicolor-picker/
+- App Icon: https://icons8.com/
+- App Icon Generator: https://makeappicon.com/
 
 ###### Credits
 - Dog Background Image: https://www.pinterest.com/baptistgirl95/cute-and-cuddly/
-- App Icon: https://icons8.com/
-- App Icon Generator: https://makeappicon.com/
