@@ -131,12 +131,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(loginButton)
     }
     
+    func emptyTextFields() {
+        username.text = ""
+        password.text = ""
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == username {
             textField.resignFirstResponder()
             password.becomeFirstResponder()
-        }
-        else {
+        } else {
             loginPressed()
         }
         return true
@@ -168,6 +172,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async(execute: {
                 let profileViewController = ProfileViewController()
                 self.navigationController?.pushViewController(profileViewController, animated: true)
+                self.emptyTextFields()
+                self.username.becomeFirstResponder()
             })
         }) { (error) in
             print(error.localizedDescription)

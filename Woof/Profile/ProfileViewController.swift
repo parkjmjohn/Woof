@@ -12,18 +12,28 @@ import Firebase
 class ProfileViewController: UIViewController {
 
     // MARK: Spacing
-    let padding0: CGFloat = 30.0
+    let settingsSize: CGFloat = 30.0
+    let buttonPadding: CGFloat = 15.0
+    let buttonHeight: CGFloat = 50.0
+    let animateButtonJump: CGFloat = -275.0
+    let buttonSpacing: CGFloat = 15.0
     
     // MARK: UI
     var backgroundImg: UIImageView!
     var profileView: ProfileView!
+    var settingsButton: UIButton!
+    var editButton: UIButton!
+    var logoutButton: UIButton!
+    var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // UI setup
         setUpBackgroundImg()
-        setUpProfileView()    }
+        setUpProfileView()
+        setUpSettings()
+    }
     
     // MARK: Background Image Setup
     func setUpBackgroundImg() {
@@ -34,19 +44,85 @@ class ProfileViewController: UIViewController {
     
     // MARK: Profile View Setup
     func setUpProfileView() {
-        profileView = ProfileView(frame: CGRect(x: padding0, y: padding0 * 2.5, width: view.frame.width - padding0 * 2, height: view.frame.height - padding0 * 3.5))
+        profileView = ProfileView(frame: CGRect(x: profileEdgeConstant, y: profileEdgeConstant * 2.5, width: view.frame.width - profileEdgeConstant * 2, height: view.frame.height - profileEdgeConstant * 3.5))
         profileView.layer.cornerRadius = profileViewRadius
         view.addSubview(profileView)
     }
     
-    //
-//    func handleLogout() {
+    // MARK: Settings setup
+    func setUpSettings() {
+        settingsButton = UIButton(frame: CGRect(x: view.frame.width - profileEdgeConstant * 2.5, y: profileEdgeConstant * 2.85, width: settingsSize, height: settingsSize))
+        let img = UIImage(named: "settings.png")
+        settingsButton.setBackgroundImage(img, for: .normal)
+        //        settingsButton.backgroundColor = .blue//DEBUG
+        settingsButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        view.addSubview(settingsButton)
+        
+        editButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
+        editButton.setTitle("Edit Profile", for: .normal)
+        editButton.layer.cornerRadius = popUpButtonCornerRadius
+        editButton.backgroundColor = .blue
+        editButton.addTarget(self, action: #selector(editPressed), for: .touchUpInside)
+        view.addSubview(editButton)
+        
+        logoutButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2 + buttonSpacing + buttonHeight, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
+        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.layer.cornerRadius = popUpButtonCornerRadius
+        logoutButton.backgroundColor = .red
+        logoutButton.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
+        view.addSubview(logoutButton)
+        
+        cancelButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2 + buttonSpacing * 2.75 + buttonHeight * 2, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.layer.cornerRadius = popUpButtonCornerRadius
+        cancelButton.backgroundColor = .blue
+        cancelButton.addTarget(self, action: #selector(cancelSettings), for: .touchUpInside)
+        view.addSubview(cancelButton)
+    }
     
-//    do {
-//    try FIRAuth.auth()?.signOut()
-//    } catch let logoutError {
-//        print(logoutError)
-//    }
+    @objc func settingsPressed() {
+        // Blur
+        //        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+        //        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //        blurEffectView.frame = bounds
+        //        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Animations
+        if settingsButton.transform == .identity {
+            UIView.animate(withDuration: TimeInterval(buttonsAnimationSpeed), animations: {
+                self.settingsButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
+                self.editButton.transform = CGAffineTransform(translationX: 0.0, y: self.animateButtonJump)
+                self.logoutButton.transform = CGAffineTransform(translationX: 0.0, y: self.animateButtonJump)
+                self.cancelButton.transform = CGAffineTransform(translationX: 0.0, y: self.animateButtonJump)
+            }) { (true) in
+            }
+        } else {
+            cancelSettings()
+        }
+    }
+    
+    @objc func cancelSettings() {
+        UIView.animate(withDuration: TimeInterval(buttonsAnimationSpeed), animations: {
+            self.settingsButton.transform = .identity
+            self.editButton.transform = .identity
+            self.logoutButton.transform = .identity
+            self.cancelButton.transform = .identity
+        }) { (true) in
+        }
+    }
+    
+    @objc func editPressed() {
+        
+    }
+    
+    @objc func logoutPressed() {
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popViewController(animated: false)
+        } catch let logoutError {
+            print(logoutError)
+        }
+    }
     
     // MARK: Needed Swift Functions
     override func didReceiveMemoryWarning() {

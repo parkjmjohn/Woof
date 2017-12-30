@@ -23,3 +23,11 @@ let backButtonWidth: CGFloat = 80.0
 
 let profileViewRadius: CGFloat = 20.0
 let profileImgBorder: CGFloat = 0.74
+let profileEdgeConstant: CGFloat = 30.0
+
+let popUpButtonCornerRadius: CGFloat = 17.5
+let buttonsAnimationSpeed: CGFloat = 0.35
+
+//var screenWidth: CGFloat = 0.0
+//var screenHeight: CGFloat = 0.0
+

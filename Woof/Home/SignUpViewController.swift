@@ -158,14 +158,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         if textField == name {
             email.becomeFirstResponder()
-        }
-        else if textField == email {
+        } else if textField == email {
             password.becomeFirstResponder()
-        }
-        else if textField == password {
+        } else if textField == password {
             repassword.becomeFirstResponder()
-        }
-        else {
+        } else {
             signUpPressed()
         }
         return true
@@ -189,24 +186,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Error.blankTextFields()
             updateHeader(newText: "ERROR: FILL IN ALL FIELDS", newColor: .red)
             return
-        }
-        else if userPassword != repassword.text {
+        } else if userPassword != repassword.text {
             Error.passwordMismatch()
             updateHeader(newText: "ERROR: PASSWORDS DO NOT MATCH", newColor: .red)
             return
-        }
-        else {
+        } else {
             Auth.auth().createUser(withEmail: userEmail!, password: userPassword!, completion: { (user, error) in
                 if user != nil {
-                    self.updateHeader(newText: "Successfully Signed Up", newColor: .white)
+                    self.updateHeader(newText: "Successfully Signed Up For Woof!", newColor: .white)
                     self.cleanUpHeader()
                     WoofDataBase.saveNewUser(uid: (user?.uid)!, name: userName!, email: userEmail!)
-                }
-                else {
+                } else {
                     if let userError = error?.localizedDescription {
                         self.updateHeader(newText: "ERROR: " + userError.capitalized, newColor: .red)
-                    }
-                    else {
+                    } else {
                         Error.userError()
                     }
                 }

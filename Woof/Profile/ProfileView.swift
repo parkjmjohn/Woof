@@ -12,12 +12,10 @@ class ProfileView: UIView {
 
     // MARK: Spacing
     let padding0: CGFloat = 55.0
-    let padding1: CGFloat = 30.0
     let imageSize: CGFloat = 100.0
     
     // MARK: UI
     var nameLabel: UILabel!
-    var settingsButton: UIButton!
     var userImg: UIImageView!
     
     override init(frame: CGRect){
@@ -28,7 +26,6 @@ class ProfileView: UIView {
         
         // UI setup
         setUpNameLabel()
-        setUpSettings()
         setUpUserImg()
     }
     
@@ -38,15 +35,6 @@ class ProfileView: UIView {
         nameLabel.textAlignment = .center
         nameLabel.text = WoofUserName
         addSubview(nameLabel)
-    }
-    
-    // MARK: Settings setup
-    func setUpSettings() {
-        settingsButton = UIButton(frame: CGRect(x: frame.width - padding1 * 1.70, y: padding1 * 0.45, width: padding1, height: padding1))
-        let img = UIImage(named: "settings.png")
-        settingsButton.setBackgroundImage(img, for: .normal)
-//        settingsButton.backgroundColor = .blue//DEBUG
-        addSubview(settingsButton)
     }
     
     // MARK: User Img Setup

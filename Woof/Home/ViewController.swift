@@ -30,7 +30,46 @@ class ViewController: UIViewController {
         
         //background setup
         setUpBackground()
-        setUpLoginSignUp()
+    }
+    
+    // MARK: First View
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Constants Handler
+//        screenWidth = view.frame.width
+//        screenHeight = view.frame.height
+        
+        // Animation Effect
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.8, animations: {
+            self.setUpHeader0()
+            self.setUpHeader1()
+        }) { (true) in
+            UIView.animate(withDuration: 0.6, animations: {
+                self.setUpLoginSignUp()
+            }, completion: { (true) in
+            })
+        }
+    }
+    
+    // MARK: Header0 setup
+    func setUpHeader0() {
+        header0 = UILabel(frame: CGRect(x: padding4, y: padding0, width: view.frame.width, height: headerFontSize * 1.2))
+        header0.text = "WOOF"
+        //        header0.textAlignment = .center
+        header0.font = .headerFont
+        header0.textColor = .homeFontColor
+        view.addSubview(header0)
+    }
+    
+    // MARK: Header1 setup
+    func setUpHeader1() {
+        header1 = UILabel(frame: CGRect(x: 0.0, y: padding0 + headerFontSize, width: view.frame.width - padding4, height: headerFontSize * 1.2))
+        header1.text = "It's Like Tinder, But For Dogs"
+        header1.textAlignment = .right
+        header1.font = .subHeaderFont
+        header1.textColor = .homeFontColor
+        view.addSubview(header1)
     }
     
     // MARK: Removing Navigation Bar
@@ -51,20 +90,6 @@ class ViewController: UIViewController {
         backgroundImage.image = UIImage(named: "homeBackground.png")
         backgroundImage.alpha = backgroundAlpha
         view.addSubview(backgroundImage)
-        
-        header0 = UILabel(frame: CGRect(x: padding4, y: padding0, width: view.frame.width, height: headerFontSize * 1.2))
-        header0.text = "WOOF"
-//        header0.textAlignment = .center
-        header0.font = .headerFont
-        header0.textColor = .homeFontColor
-        view.addSubview(header0)
-        
-        header1 = UILabel(frame: CGRect(x: 0.0, y: padding0 + headerFontSize, width: view.frame.width - padding4, height: headerFontSize * 1.2))
-        header1.text = "It's Like Tinder, But For Dogs"
-        header1.textAlignment = .right
-        header1.font = .subHeaderFont
-        header1.textColor = .homeFontColor
-        view.addSubview(header1)
     }
     
     // MARK: Login and SignUp functions setup
@@ -94,12 +119,12 @@ class ViewController: UIViewController {
     
     @objc func loginPressed() {
         let loginViewController = LoginViewController()
-        navigationController?.pushViewController(loginViewController, animated: true)
+        navigationController?.pushViewController(loginViewController, animated: false)
     }
     
     @objc func setUpPressed() {
         let signUpViewController = SignUpViewController()
-        navigationController?.pushViewController(signUpViewController, animated: true)
+        navigationController?.pushViewController(signUpViewController, animated: false)
     }
     
     // MARK: Needed Swift Functions
