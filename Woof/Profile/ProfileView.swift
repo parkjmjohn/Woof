@@ -33,6 +33,7 @@ class ProfileView: UIView {
     func setUpNameLabel() {
         nameLabel = UILabel(frame: CGRect(x: 0.0, y: padding0, width: frame.width, height: 20))
         nameLabel.textAlignment = .center
+        nameLabel.font = .profileFont
         nameLabel.text = WoofUserName
         addSubview(nameLabel)
     }

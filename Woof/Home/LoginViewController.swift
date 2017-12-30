@@ -74,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Back button setup
     func setUpBackButton() {
         backButton = UIButton(frame: CGRect(x: padding0 / 2.0, y: padding0, width: backButtonWidth, height: buttonHeight))
-        backButton.layer.borderWidth = buttonBorder
+//        backButton.layer.borderWidth = buttonBorder
         backButton.layer.borderColor = .borderColor
         backButton.layer.cornerRadius = buttonCornerRadius
         backButton.backgroundColor = .loginColor
@@ -119,7 +119,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(password)
         
         loginButton = UIButton(frame: CGRect(x: 0.0, y: padding1 + buttonHeight * padding4 * 2 + padding3, width: padding2, height: buttonHeight * padding4))
-        loginButton.layer.borderWidth = buttonBorder
+//        loginButton.layer.borderWidth = buttonBorder
         loginButton.layer.borderColor = .borderColor
         loginButton.center.x = view.center.x
         loginButton.backgroundColor = .homeFontColor
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         } else {
-            updateHeader(newText: "Fill in all Fields", newColor: .red)
+            updateHeader(newText: "Fill in All Fields", newColor: .red)
         }
     }
 
@@ -173,6 +173,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let profileViewController = ProfileViewController()
                 self.navigationController?.pushViewController(profileViewController, animated: true)
                 self.emptyTextFields()
+                self.updateHeader(newText: "Enter E-mail and Password", newColor: .white)
                 self.username.becomeFirstResponder()
             })
         }) { (error) in

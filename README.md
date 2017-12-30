@@ -2,9 +2,10 @@
 Like-Tinder, but for dogs
 
 #### TODO
-- Save user's data within Firebase
+- Create design layout for profile and JSON
+- Create algorithm for matches
 - Have Tinder-like aspects
-- Beginning animations
+- Fix push view controller
 
 ##### Useful Tools
 - Firebase: https://firebase.google.com/

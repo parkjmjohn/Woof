@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         
         //background setup
         setUpBackground()
+        setUpLoginSignUp()
     }
     
     // MARK: First View
@@ -38,17 +39,15 @@ class ViewController: UIViewController {
         // Constants Handler
 //        screenWidth = view.frame.width
 //        screenHeight = view.frame.height
-        
-        // Animation Effect
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.8, animations: {
             self.setUpHeader0()
             self.setUpHeader1()
         }) { (true) in
-            UIView.animate(withDuration: 0.6, animations: {
-                self.setUpLoginSignUp()
-            }, completion: { (true) in
-            })
+//            UIView.animate(withDuration: 0.6, animations: {
+//                self.setUpLoginSignUp()
+//            }, completion: { (true) in
+//            })
         }
     }
     
@@ -95,7 +94,7 @@ class ViewController: UIViewController {
     // MARK: Login and SignUp functions setup
     func setUpLoginSignUp() {
         loginButton = UIButton(frame: CGRect(x: view.center.x - padding2 - padding3, y: view.center.y + padding1, width: padding2, height: buttonHeight))
-        loginButton.layer.borderWidth = buttonBorder
+//        loginButton.layer.borderWidth = buttonBorder
         loginButton.layer.borderColor = .borderColor
         loginButton.layer.cornerRadius = buttonCornerRadius
         loginButton.backgroundColor = .loginColor
@@ -106,7 +105,7 @@ class ViewController: UIViewController {
         view.addSubview(loginButton)
         
         signUpButton = UIButton(frame: CGRect(x: view.center.x + padding3, y: view.center.y + padding1, width: padding2, height: buttonHeight))
-        signUpButton.layer.borderWidth = buttonBorder
+//        signUpButton.layer.borderWidth = buttonBorder
         signUpButton.layer.borderColor = .borderColor
         signUpButton.layer.cornerRadius = buttonCornerRadius
         signUpButton.backgroundColor = .signUpColor

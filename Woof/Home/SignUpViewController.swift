@@ -77,7 +77,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: Back button setup
     func setUpBackButton() {
         backButton = UIButton(frame: CGRect(x: padding0 / 2.0, y: padding0, width: backButtonWidth, height: buttonHeight))
-        backButton.layer.borderWidth = buttonBorder
+//        backButton.layer.borderWidth = buttonBorder
         backButton.layer.borderColor = .borderColor
         backButton.layer.cornerRadius = buttonCornerRadius
         backButton.backgroundColor = .signUpColor
@@ -142,7 +142,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(repassword)
         
         signUpButton = UIButton(frame: CGRect(x: 0.0, y: 1.2 * padding1 + buttonHeight * padding4 * 4 + padding3, width: padding2, height: buttonHeight * padding4))
-        signUpButton.layer.borderWidth = buttonBorder
+//        signUpButton.layer.borderWidth = buttonBorder
         signUpButton.layer.borderColor = .borderColor
         signUpButton.center.x = view.center.x
         signUpButton.backgroundColor = .homeFontColor

@@ -15,8 +15,8 @@ class ProfileViewController: UIViewController {
     let settingsSize: CGFloat = 30.0
     let buttonPadding: CGFloat = 15.0
     let buttonHeight: CGFloat = 50.0
-    let animateButtonJump: CGFloat = -275.0
-    let buttonSpacing: CGFloat = 15.0
+    let animateButtonJump: CGFloat = -260.0
+    let buttonSpacing: CGFloat = 12.5
     
     // MARK: UI
     var backgroundImg: UIImageView!
@@ -61,21 +61,21 @@ class ProfileViewController: UIViewController {
         editButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
         editButton.setTitle("Edit Profile", for: .normal)
         editButton.layer.cornerRadius = popUpButtonCornerRadius
-        editButton.backgroundColor = .blue
+        editButton.backgroundColor = .loginColor
         editButton.addTarget(self, action: #selector(editPressed), for: .touchUpInside)
         view.addSubview(editButton)
         
         logoutButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2 + buttonSpacing + buttonHeight, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.layer.cornerRadius = popUpButtonCornerRadius
-        logoutButton.backgroundColor = .red
+        logoutButton.backgroundColor = .homeFontColor
         logoutButton.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
         view.addSubview(logoutButton)
         
-        cancelButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2 + buttonSpacing * 2.75 + buttonHeight * 2, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
+        cancelButton = UIButton(frame: CGRect(x: buttonPadding, y: view.frame.height + profileEdgeConstant * 2 + buttonSpacing * 2.85 + buttonHeight * 2, width: view.frame.width - buttonPadding * 2, height: buttonHeight))
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.layer.cornerRadius = popUpButtonCornerRadius
-        cancelButton.backgroundColor = .blue
+        cancelButton.backgroundColor = .signUpColor
         cancelButton.addTarget(self, action: #selector(cancelSettings), for: .touchUpInside)
         view.addSubview(cancelButton)
     }
@@ -112,13 +112,13 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func editPressed() {
-        
+        cancelSettings()
     }
     
     @objc func logoutPressed() {
         do {
             try Auth.auth().signOut()
-            navigationController?.popViewController(animated: false)
+            navigationController?.popViewController(animated: true)
         } catch let logoutError {
             print(logoutError)
         }

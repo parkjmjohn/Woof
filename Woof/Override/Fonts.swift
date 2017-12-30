@@ -26,4 +26,8 @@ extension UIFont {
         return UIFont(name: "Menlo-Regular", size: buttonHeight * 1.3)!
     }
     
+    class var profileFont: UIFont {
+        return UIFont(name: "ArialRoundedMTBold", size: profileNameFontSize)!
+    }
+    
 }
