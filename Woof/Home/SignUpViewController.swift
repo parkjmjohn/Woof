@@ -13,7 +13,6 @@ import FirebaseAuth
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Padding
-    let padding0: CGFloat = 25.0
     let padding1: CGFloat = 125.0
     let padding2: CGFloat = 250.0
     let padding3: CGFloat = 28.0
@@ -76,7 +75,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Back button setup
     func setUpBackButton() {
-        backButton = UIButton(frame: CGRect(x: padding0 / 2.0, y: padding0, width: backButtonWidth, height: buttonHeight))
+        backButton = UIButton(frame: CGRect(x: backButtonPadding / 2.0, y: backButtonPadding, width: backButtonWidth, height: buttonHeight))
 //        backButton.layer.borderWidth = buttonBorder
         backButton.layer.borderColor = .borderColor
         backButton.layer.cornerRadius = buttonCornerRadius
@@ -99,7 +98,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         name.center.x = view.center.x
         name.backgroundColor = .textFieldColor
         name.layer.cornerRadius = textFieldCornerRadius
-        name.placeholder = " Name"
+        name.layer.sublayerTransform = CATransform3DMakeTranslation(textFieldPadding, 0, 0)
+        name.placeholder = "Name"
         name.autocorrectionType = .no
         name.autocapitalizationType = .words
         name.spellCheckingType = .no
@@ -110,7 +110,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         email.center.x = view.center.x
         email.backgroundColor = .textFieldColor
         email.layer.cornerRadius = textFieldCornerRadius
-        email.placeholder = " E-mail"
+        email.layer.sublayerTransform = CATransform3DMakeTranslation(textFieldPadding, 0, 0)
+        email.placeholder = "E-mail"
         email.autocorrectionType = .no
         email.autocapitalizationType = .none
         email.spellCheckingType = .no
@@ -121,7 +122,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         password.center.x = view.center.x
         password.backgroundColor = .textFieldColor
         password.layer.cornerRadius = textFieldCornerRadius
-        password.placeholder = " Password"
+        password.layer.sublayerTransform = CATransform3DMakeTranslation(textFieldPadding, 0, 0)
+        password.placeholder = "Password"
         password.autocorrectionType = .no
         password.autocapitalizationType = .none
         password.spellCheckingType = .no
@@ -133,7 +135,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         repassword.center.x = view.center.x
         repassword.backgroundColor = .textFieldColor
         repassword.layer.cornerRadius = textFieldCornerRadius
-        repassword.placeholder = " Re-enter Password"
+        repassword.layer.sublayerTransform = CATransform3DMakeTranslation(textFieldPadding, 0, 0)
+        repassword.placeholder = "Re-enter Password"
         repassword.autocorrectionType = .no
         repassword.autocapitalizationType = .none
         repassword.spellCheckingType = .no
@@ -195,7 +198,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 if user != nil {
                     self.updateHeader(newText: "Successfully Signed Up For Woof!", newColor: .white)
                     self.cleanUpHeader()
-                    WoofDataBase.saveNewUser(uid: (user?.uid)!, name: userName!, email: userEmail!)
+                    WoofDataBase.saveNewUser(name: userName!, email: userEmail!)
                 } else {
                     if let userError = error?.localizedDescription {
                         self.updateHeader(newText: "ERROR: " + userError.capitalized, newColor: .red)

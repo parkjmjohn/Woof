@@ -12,7 +12,6 @@ import Firebase
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Padding
-    let padding0: CGFloat = 25.0
     let padding1: CGFloat = 125.0
     let padding2: CGFloat = 250.0
     let padding3: CGFloat = 28.0
@@ -73,7 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Back button setup
     func setUpBackButton() {
-        backButton = UIButton(frame: CGRect(x: padding0 / 2.0, y: padding0, width: backButtonWidth, height: buttonHeight))
+        backButton = UIButton(frame: CGRect(x: backButtonPadding / 2.0, y: backButtonPadding, width: backButtonWidth, height: buttonHeight))
 //        backButton.layer.borderWidth = buttonBorder
         backButton.layer.borderColor = .borderColor
         backButton.layer.cornerRadius = buttonCornerRadius
@@ -95,7 +94,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         username.center.x = view.center.x
         username.backgroundColor = .textFieldColor
         username.layer.cornerRadius = textFieldCornerRadius
-        username.placeholder = " e-mail"
+        username.layer.sublayerTransform = CATransform3DMakeTranslation(textFieldPadding, 0, 0)
+        username.placeholder = "E-mail"
         username.leftViewMode = .always
         username.leftView = .userImg
         username.autocorrectionType = .no
@@ -108,7 +108,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         password.center.x = view.center.x
         password.backgroundColor = .textFieldColor
         password.layer.cornerRadius = textFieldCornerRadius
-        password.placeholder = " password"
+        password.layer.sublayerTransform = CATransform3DMakeTranslation(textFieldPadding, 0, 0)
+        password.placeholder = "Password"
         password.leftViewMode = .always
         password.leftView = .passwordImg
         password.autocorrectionType = .no
@@ -152,7 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if userEmail != "" && userPassword != "" {
             Auth.auth().signIn(withEmail: userEmail!, password: userPassword!, completion: { (user, error) in
                 if user != nil {
-                    self.loginUser(uid: (Auth.auth().currentUser?.uid)!)
+                    self.getName()
                 } else {
                     if let userError = error?.localizedDescription {
                         self.updateHeader(newText: userError, newColor: .red)
@@ -166,19 +167,47 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func loginUser(uid: String) {
-        Database.database().reference(fromURL: WoofDataBaseSource).child("users").child(uid).child("Name").observeSingleEvent(of: .value, with: { (snapshot) in
+    func getProfile() {
+        var ret = [String]()
+        var alreadyRan = false
+        Database.database().reference(fromURL: WoofDataBaseSource).child("users").child(uid!).child("Profile").observe(.childAdded, with: { (snapshot) in
+            ret.append((snapshot.value as? String)!)
+            DispatchQueue.main.async {
+                WoofUser.bio = ret[0]
+                WoofUser.breedType = ret[1]
+                WoofUser.height = ret[2]
+                WoofUser.hobbies = ret[3]
+                WoofUser.interestedIn = ret[4]
+                WoofUser.occupation = ret[5]
+                WoofUser.weight = ret[6]
+//ERROR: Need more efficient wasy
+                if alreadyRan == false {
+                    self.pushVC()
+                    alreadyRan = true
+                }
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func getName() {
+        Database.database().reference(fromURL: WoofDataBaseSource).child("users").child(uid!).child("Name").observeSingleEvent(of: .value, with: { (snapshot) in
             WoofUserName = snapshot.value as! String
             DispatchQueue.main.async(execute: {
-                let profileViewController = ProfileViewController()
-                self.navigationController?.pushViewController(profileViewController, animated: true)
-                self.emptyTextFields()
-                self.updateHeader(newText: "Enter E-mail and Password", newColor: .white)
-                self.username.becomeFirstResponder()
+                self.getProfile()
             })
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    func pushVC() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+        emptyTextFields()
+        updateHeader(newText: "Enter E-mail and Password", newColor: .white)
+        username.becomeFirstResponder()
     }
     
     // MARK: Needed Swift Functions

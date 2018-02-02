@@ -11,11 +11,20 @@ import Firebase
 
 class WoofDataBase {
     
-    static func saveNewUser(uid: String, name: String, email: String) {
+    static func saveNewUser(name: String, email: String) {
         let ref = Database.database().reference(fromURL: WoofDataBaseSource)
-        let userRef = ref.child("users").child(uid)
+        var userRef = ref.child("users").child(uid!)
         userRef.updateChildValues(["Name": name])
         userRef.updateChildValues(["E-mail": email])
+        
+        userRef = userRef.child("Profile")
+        userRef.updateChildValues(["Bio": "7"])
+        userRef.updateChildValues(["Breed Type": "1"])
+        userRef.updateChildValues(["Height": "2"])
+        userRef.updateChildValues(["Hobbies": "5"])
+        userRef.updateChildValues(["Interested in": "4"])
+        userRef.updateChildValues(["Occupation": "6"])
+        userRef.updateChildValues(["Weight": "3"])
     }
     
 }

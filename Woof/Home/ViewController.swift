@@ -116,6 +116,7 @@ class ViewController: UIViewController {
         view.addSubview(signUpButton)
     }
     
+    // MARK: @objc functions
     @objc func loginPressed() {
         let loginViewController = LoginViewController()
         navigationController?.pushViewController(loginViewController, animated: false)
